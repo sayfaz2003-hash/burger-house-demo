@@ -3,162 +3,439 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BURGER HOUSE | Restaurant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="Burger House - Burgers frais et délicieux. Commandez en ligne.">
+<title>Burger House | Fresh Burgers</title>
+
 <style>
+:root{
+  --bg:#101010;
+  --panel:#1c1c1c;
+  --orange:#ff9d00;
+  --white:#fff;
+  --muted:#aaa;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#111;color:white}
-header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;background:#181818}
-.logo{font-size:23px;font-weight:900;color:#ff9d00}
-button{cursor:pointer;border:0;border-radius:25px;padding:11px 17px;font-weight:bold}
-.lang{background:#ff9d00;color:#111}
-.hero{text-align:center;padding:75px 20px;background:linear-gradient(#0009,#000b),url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400') center/cover}
-.hero h1{font-size:42px;margin-bottom:15px}
-.hero h1 span{color:#ff9d00}
-.hero p{font-size:17px;margin-bottom:25px}
-.order{background:#ff9d00;color:#111;text-decoration:none;padding:14px 24px;border-radius:25px;display:inline-block;font-weight:bold}
-section{padding:45px 6%;text-align:center}
-h2{font-size:30px;margin-bottom:25px}
-h2 span{color:#ff9d00}
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:#202020;border-radius:16px;overflow:hidden;text-align:left}
-.card img{width:100%;height:180px;object-fit:cover}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.5;
+}
+button{font-family:inherit;cursor:pointer}
+header{
+  position:sticky;top:0;z-index:10;
+  background:#151515f5;
+  border-bottom:1px solid #333;
+  padding:14px 5%;
+  display:flex;align-items:center;
+  justify-content:space-between;gap:12px;
+}
+.logo{font-size:21px;font-weight:900;color:var(--orange)}
+.header-actions{display:flex;gap:9px;align-items:center}
+.small-btn{
+  border:1px solid #444;background:#222;
+  color:white;border-radius:22px;padding:9px 13px;
+}
+.cart-btn{
+  background:var(--orange);color:#111;
+  border:0;border-radius:22px;padding:10px 14px;
+  font-weight:bold;
+}
+.hero{
+  min-height:390px;
+  padding:75px 20px;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  background:linear-gradient(#0009,#000b),
+  url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400') center/cover;
+}
+.hero h1{font-size:clamp(34px,7vw,60px);font-weight:900}
+.orange{color:var(--orange)}
+.hero p{color:#eee;margin:12px 0 25px;font-size:17px}
+.primary{
+  display:inline-block;background:var(--orange);
+  color:#111;text-decoration:none;
+  padding:13px 23px;border-radius:30px;font-weight:bold;
+  border:0;
+}
+section{padding:48px 5%}
+.section-title{text-align:center;font-size:30px;margin-bottom:27px}
+.filters{
+  display:flex;justify-content:center;gap:10px;
+  flex-wrap:wrap;margin-bottom:25px;
+}
+.filter{
+  background:#242424;color:white;border:1px solid #444;
+  padding:9px 16px;border-radius:22px;
+}
+.filter.active{background:var(--orange);color:#111;border-color:var(--orange)}
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;max-width:1100px;margin:auto;
+}
+.card{
+  background:var(--panel);border:1px solid #292929;
+  border-radius:17px;overflow:hidden;
+}
+.card img{width:100%;height:190px;object-fit:cover;display:block}
 .info{padding:17px}
-.info h3{margin-bottom:9px}
-.info p{color:#bbb;font-size:14px;min-height:35px}
-.price{color:#ff9d00;font-size:20px;font-weight:bold;margin-top:13px}
-.about{background:#1b1b1b}
-.contact p{margin:12px}
-footer{background:#080808;text-align:center;padding:22px;color:#aaa}
+.info h3{font-size:19px;margin-bottom:6px}
+.description{font-size:14px;color:var(--muted);min-height:42px}
+.card-bottom{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:8px;margin-top:15px;
+}
+.price{font-size:20px;color:var(--orange);font-weight:900}
+.add-btn{
+  background:var(--orange);color:#111;
+  border:0;border-radius:22px;padding:10px 15px;font-weight:bold;
+}
+.about{
+  text-align:center;background:#191919;
+}
+.about p{max-width:650px;margin:auto;color:#bbb}
+.cart-section{background:#151515}
+.cart-box{max-width:750px;margin:auto}
+.cart-empty{text-align:center;color:#aaa;padding:25px}
+.cart-item{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;padding:15px 0;border-bottom:1px solid #333;
+}
+.cart-name{font-weight:bold}
+.cart-price{color:var(--orange);font-size:14px}
+.quantity{display:flex;align-items:center;gap:10px}
+.quantity button{
+  background:#333;color:white;border:0;
+  width:30px;height:30px;border-radius:50%;font-size:18px;
+}
+.cart-total{
+  display:flex;justify-content:space-between;
+  font-size:22px;font-weight:bold;padding:22px 0;
+}
+.checkout{
+  width:100%;padding:15px;border:0;border-radius:30px;
+  background:#20bd5a;color:white;font-size:16px;font-weight:bold;
+}
+.checkout:disabled{opacity:.4;cursor:not-allowed}
+.contact{text-align:center}
+.contact p{color:#bbb;margin:9px}
+footer{text-align:center;padding:24px;background:#080808;color:#888;font-size:13px}
+.note{font-size:12px;color:#888;margin-top:12px;text-align:center}
+[hidden]{display:none!important}
 @media(max-width:500px){
-.hero h1{font-size:32px}
-section{padding:35px 5%}
+  header{padding:12px 4%}
+  .logo{font-size:17px}
+  .small-btn,.cart-btn{padding:8px 10px;font-size:12px}
+  .hero{min-height:340px}
+  section{padding:38px 4%}
+  .menu{grid-template-columns:1fr 1fr;gap:12px}
+  .card img{height:130px}
+  .info{padding:11px}
+  .info h3{font-size:15px}
+  .description{font-size:12px;min-height:52px}
+  .price{font-size:16px}
+  .add-btn{padding:8px 10px;font-size:12px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="logo">🍔 BURGER HOUSE</div>
-  <button class="lang" onclick="changeLang()" id="langBtn">العربية</button>
+  <div class="header-actions">
+    <button class="small-btn" id="langBtn" onclick="toggleLanguage()">العربية</button>
+    <button class="cart-btn" onclick="goToCart()">
+      🛒 <span id="cartCount">0</span>
+    </button>
+  </div>
 </header>
 
-<div class="hero">
-  <h1 id="heroTitle">LE GOÛT <span>AUTHENTIQUE</span></h1>
-  <p id="heroText">Des burgers généreux, préparés avec passion !</p>
-  <a class="order" id="heroOrder" href="#menu">DÉCOUVRIR NOTRE MENU</a>
-</div>
-
-<section id="menu">
-  <h2 id="menuTitle">NOTRE <span>MENU</span></h2>
-  <div class="menu">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600" alt="Classic burger">
-      <div class="info">
-        <h3 id="name1">Classic Burger</h3>
-        <p id="desc1">Steak, fromage, salade et sauce maison.</p>
-        <div class="price">12 DT</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600" alt="Double burger">
-      <div class="info">
-        <h3 id="name2">Double Cheese</h3>
-        <p id="desc2">Double steak, double fromage, sauce spéciale.</p>
-        <div class="price">18 DT</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600" alt="Chicken burger">
-      <div class="info">
-        <h3 id="name3">Chicken Burger</h3>
-        <p id="desc3">Poulet croustillant, salade et sauce.</p>
-        <div class="price">14 DT</div>
-      </div>
-    </div>
-
+<main>
+  <div class="hero">
+    <h1 id="heroTitle">THE REAL <span class="orange">BURGER</span></h1>
+    <p id="heroText">Fresh ingredients. Amazing taste. Made with love.</p>
+    <a href="#menu" class="primary" id="heroButton">DISCOVER OUR MENU</a>
   </div>
-</section>
 
-<section class="about">
-  <h2 id="aboutTitle">À <span>PROPOS</span></h2>
-  <p id="aboutText">Chez Burger House, nous préparons chaque burger avec des ingrédients soigneusement sélectionnés et beaucoup de passion.</p>
-</section>
+  <section id="menu">
+    <h2 class="section-title" id="menuTitle">OUR <span class="orange">MENU</span></h2>
+    <div class="filters">
+      <button class="filter active" onclick="filterMenu('all',this)" id="allBtn">All</button>
+      <button class="filter" onclick="filterMenu('burger',this)" id="burgerBtn">Burgers</button>
+      <button class="filter" onclick="filterMenu('chicken',this)" id="chickenBtn">Chicken</button>
+    </div>
+    <div class="menu" id="menuGrid"></div>
+  </section>
 
-<section class="contact">
-  <h2 id="contactTitle">NOUS <span>CONTACTER</span></h2>
-  <p id="address">📍 Votre adresse ici, Tunisie</p>
-  <p>📞 +216 XX XXX XXX</p>
-  <a class="order" id="contactOrder"
-     href="https://wa.me/21600000000"
-     target="_blank">COMMANDER SUR WHATSAPP</a>
-</section>
+  <section class="cart-section" id="cart">
+    <h2 class="section-title" id="cartTitle">YOUR <span class="orange">CART</span></h2>
+    <div class="cart-box">
+      <div id="cartItems" class="cart-empty">Your cart is empty.</div>
+      <div class="cart-total">
+        <span id="totalLabel">Total</span>
+        <span id="totalPrice">0 DT</span>
+      </div>
+      <button class="checkout" id="checkoutBtn" onclick="checkout()" disabled>
+        ORDER VIA WHATSAPP
+      </button>
+      <p class="note" id="cartNote">Your order will be sent to the restaurant via WhatsApp.</p>
+    </div>
+  </section>
 
-<footer id="footerText">
-  © 2026 BURGER HOUSE - Tous droits réservés
-</footer>
+  <section class="about">
+    <h2 class="section-title" id="aboutTitle">ABOUT <span class="orange">US</span></h2>
+    <p id="aboutText">At Burger House, every burger is made with fresh ingredients, quality products and lots of passion.</p>
+  </section>
+
+  <section class="contact">
+    <h2 class="section-title" id="contactTitle">CONTACT <span class="orange">US</span></h2>
+    <p id="address">📍 Your address, Tunisia</p>
+    <p>📞 +216 XX XXX XXX</p>
+  </section>
+</main>
+
+<footer id="footer">© 2026 BURGER HOUSE. All rights reserved.</footer>
 
 <script>
-let arabic=false;
+// CHANGE THIS NUMBER BEFORE USING THE WEBSITE.
+// International format: 216 followed by the phone number.
+// Example format only: 216XXXXXXXX
+const WHATSAPP_NUMBER = "21600000000";
 
-function changeLang(){
- arabic=!arabic;
- document.documentElement.lang=arabic?"ar":"fr";
- document.body.style.direction=arabic?"rtl":"ltr";
+const products = [
+ {
+  id:1,category:"burger",price:12,
+  name:"Classic Burger",ar:"برغر كلاسيك",
+  desc:"Beef, cheese, lettuce and house sauce.",
+  arDesc:"لحم، جبن، خس وصلصة منزلية.",
+  img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700"
+ },
+ {
+  id:2,category:"burger",price:18,
+  name:"Double Cheese",ar:"دوبل تشيز",
+  desc:"Double beef, double cheese and special sauce.",
+  arDesc:"قطعتا لحم، جبن مضاعف وصلصة خاصة.",
+  img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=700"
+ },
+ {
+  id:3,category:"chicken",price:14,
+  name:"Chicken Burger",ar:"برغر الدجاج",
+  desc:"Crispy chicken, lettuce and creamy sauce.",
+  arDesc:"دجاج مقرمش، خس وصلصة كريمية.",
+  img:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=700"
+ },
+ {
+  id:4,category:"burger",price:20,
+  name:"BBQ Burger",ar:"برغر باربكيو",
+  desc:"Beef, cheddar, onion and BBQ sauce.",
+  arDesc:"لحم، جبن شيدر، بصل وصلصة باربكيو.",
+  img:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=700"
+ },
+ {
+  id:5,category:"chicken",price:16,
+  name:"Crispy Chicken",ar:"دجاج كريسبي",
+  desc:"Golden crispy chicken with our special sauce.",
+  arDesc:"دجاج مقرمش ذهبي مع صلصتنا الخاصة.",
+  img:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=700"
+ },
+ {
+  id:6,category:"burger",price:22,
+  name:"Mega Burger",ar:"ميغا برغر",
+  desc:"Big beef burger with cheese and fresh vegetables.",
+  arDesc:"برغر لحم كبير مع الجبن والخضروات الطازجة.",
+  img:"https://images.unsplash.com/photo-1550547660-d9450f859349?w=700"
+ }
+];
 
- const t={
+let cart = {};
+let isArabic = false;
+
+const translations = {
  fr:{
-  btn:"العربية",
-  hero:'LE GOÛT <span>AUTHENTIQUE</span>',
-  slogan:"Des burgers généreux, préparés avec passion !",
-  heroBtn:"DÉCOUVRIR NOTRE MENU",
-  menu:'NOTRE <span>MENU</span>',
-  names:["Classic Burger","Double Cheese","Chicken Burger"],
-  desc:["Steak, fromage, salade et sauce maison.",
-  "Double steak, double fromage, sauce spéciale.",
-  "Poulet croustillant, salade et sauce."],
-  about:'À <span>PROPOS</span>',
-  aboutText:"Chez Burger House, nous préparons chaque burger avec des ingrédients soigneusement sélectionnés et beaucoup de passion.",
-  contact:'NOUS <span>CONTACTER</span>',
-  order:"COMMANDER SUR WHATSAPP",
-  footer:"© 2026 BURGER HOUSE - Tous droits réservés"
+  lang:"العربية",
+  hero:"THE REAL <span class='orange'>BURGER</span>",
+  slogan:"Fresh ingredients. Amazing taste. Made with love.",
+  heroBtn:"DISCOVER OUR MENU",
+  menu:"OUR <span class='orange'>MENU</span>",
+  all:"All",burger:"Burgers",chicken:"Chicken",
+  add:"Add +",
+  cart:"YOUR <span class='orange'>CART</span>",
+  empty:"Your cart is empty.",
+  total:"Total",
+  checkout:"ORDER VIA WHATSAPP",
+  note:"Your order will be sent to the restaurant via WhatsApp.",
+  about:"ABOUT <span class='orange'>US</span>",
+  aboutText:"At Burger House, every burger is made with fresh ingredients, quality products and lots of passion.",
+  contact:"CONTACT <span class='orange'>US</span>",
+  footer:"© 2026 BURGER HOUSE. All rights reserved.",
+  alert:"Your cart is empty!",
+  missing:"Please configure the restaurant WhatsApp number first."
  },
  ar:{
-  btn:"Français",
-  hero:'الطعم <span>الأصيل</span>',
-  slogan:"برغر شهي ومحضّر بكل حب!",
+  lang:"Français",
+  hero:"البرغر <span class='orange'>الأصلي</span>",
+  slogan:"مكونات طازجة، مذاق رائع، ومحضّر بكل حب.",
   heroBtn:"اكتشف قائمتنا",
-  menu:'قائمة <span>الطعام</span>',
-  names:["برغر كلاسيك","دوبل تشيز","برغر الدجاج"],
-  desc:["لحم وجبن وخس وصلصة منزلية.",
-  "قطعتا لحم وجبن مضاعف وصلصة خاصة.",
-  "دجاج مقرمش وخس وصلصة."],
-  about:'من <span>نحن</span>',
-  aboutText:"في برغر هاوس نحضّر كل برغر بمكونات مختارة بعناية وبكل شغف.",
-  contact:'<span>اتصل</span> بنا',
-  order:"اطلب عبر واتساب",
-  footer:"© 2026 برغر هاوس - جميع الحقوق محفوظة"
+  menu:"قائمة <span class='orange'>الطعام</span>",
+  all:"الكل",burger:"برغر",chicken:"دجاج",
+  add:"أضف +",
+  cart:"<span class='orange'>سلّة</span> المشتريات",
+  empty:"سلة المشتريات فارغة.",
+  total:"المجموع",
+  checkout:"اطلب عبر واتساب",
+  note:"سيتم إرسال طلبك إلى المطعم عبر واتساب.",
+  about:"من <span class='orange'>نحن</span>",
+  aboutText:"في برغر هاوس نحضّر كل برغر بمكونات طازجة ومنتجات ذات جودة وبكل شغف.",
+  contact:"<span class='orange'>اتصل</span> بنا",
+  footer:"© 2026 برغر هاوس. جميع الحقوق محفوظة.",
+  alert:"سلة المشتريات فارغة!",
+  missing:"يجب إضافة رقم واتساب المطعم أولاً."
  }
- };
- let x=arabic?t.ar:t.fr;
- document.getElementById("langBtn").textContent=x.btn;
- document.getElementById("heroTitle").innerHTML=x.hero;
- document.getElementById("heroText").textContent=x.slogan;
- document.getElementById("heroOrder").textContent=x.heroBtn;
- document.getElementById("menuTitle").innerHTML=x.menu;
- for(let i=1;i<=3;i++){
-  document.getElementById("name"+i).textContent=x.names[i-1];
-  document.getElementById("desc"+i).textContent=x.desc[i-1];
- }
- document.getElementById("aboutTitle").innerHTML=x.about;
- document.getElementById("aboutText").textContent=x.aboutText;
- document.getElementById("contactTitle").innerHTML=x.contact;
- document.getElementById("contactOrder").textContent=x.order;
- document.getElementById("footerText").textContent=x.footer;
+};
+
+function t(){return isArabic?translations.ar:translations.fr;}
+
+function renderMenu(category="all"){
+ const grid=document.getElementById("menuGrid");
+ grid.innerHTML="";
+ products.filter(p=>category==="all"||p.category===category).forEach(p=>{
+  const name=isArabic?p.ar:p.name;
+  const desc=isArabic?p.arDesc:p.desc;
+  const card=document.createElement("article");
+  card.className="card";
+  card.innerHTML=`
+   <img src="${p.img}" alt="${name}" loading="lazy">
+   <div class="info">
+    <h3>${name}</h3>
+    <p class="description">${desc}</p>
+    <div class="card-bottom">
+     <span class="price">${p.price} DT</span>
+     <button class="add-btn" onclick="addToCart(${p.id})">${t().add}</button>
+    </div>
+   </div>`;
+  grid.appendChild(card);
+ });
 }
+
+function filterMenu(category,button){
+ document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ renderMenu(category);
+}
+
+function addToCart(id){
+ cart[id]=(cart[id]||0)+1;
+ renderCart();
+}
+
+function changeQuantity(id,amount){
+ cart[id]=(cart[id]||0)+amount;
+ if(cart[id]<=0)delete cart[id];
+ renderCart();
+}
+
+function renderCart(){
+ const box=document.getElementById("cartItems");
+ const entries=Object.entries(cart);
+ const count=entries.reduce((sum,[id,qty])=>sum+qty,0);
+ const total=entries.reduce((sum,[id,qty])=>{
+  const p=products.find(x=>x.id===Number(id));
+  return sum+p.price*qty;
+ },0);
+
+ document.getElementById("cartCount").textContent=count;
+ document.getElementById("totalPrice").textContent=total+" DT";
+ document.getElementById("checkoutBtn").disabled=count===0;
+
+ if(!entries.length){
+  box.className="cart-empty";
+  box.textContent=t().empty;
+  return;
+ }
+
+ box.className="";
+ box.innerHTML="";
+ entries.forEach(([id,qty])=>{
+  const p=products.find(x=>x.id===Number(id));
+  const row=document.createElement("div");
+  row.className="cart-item";
+  row.innerHTML=`
+   <div>
+    <div class="cart-name">${isArabic?p.ar:p.name}</div>
+    <div class="cart-price">${p.price} DT × ${qty}</div>
+   </div>
+   <div class="quantity">
+    <button onclick="changeQuantity(${id},-1)" aria-label="Decrease">−</button>
+    <b>${qty}</b>
+    <button onclick="changeQuantity(${id},1)" aria-label="Increase">+</button>
+   </div>`;
+  box.appendChild(row);
+ });
+}
+
+function checkout(){
+ const entries=Object.entries(cart);
+ if(!entries.length){alert(t().alert);return;}
+
+ if(!/^216\d{8}$/.test(WHATSAPP_NUMBER)){
+  alert(t().missing);return;
+ }
+
+ let total=0;
+ let lines=[];
+ lines.push(isArabic?"مرحباً، أريد طلب المنتجات التالية:":"Bonjour, je souhaite commander :");
+
+ entries.forEach(([id,qty])=>{
+  const p=products.find(x=>x.id===Number(id));
+  const subtotal=p.price*qty;
+  total+=subtotal;
+  lines.push(`${isArabic?p.ar:p.name} x ${qty} = ${subtotal} DT`);
+ });
+
+ lines.push((isArabic?"المجموع: ":"Total : ")+total+" DT");
+ lines.push(isArabic?"شكراً!":"Merci !");
+ const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(lines.join("\n"));
+ window.open(url,"_blank");
+}
+
+function goToCart(){
+ document.getElementById("cart").scrollIntoView({behavior:"smooth"});
+}
+
+function toggleLanguage(){
+ isArabic=!isArabic;
+ document.documentElement.lang=isArabic?"ar":"fr";
+ document.documentElement.dir=isArabic?"rtl":"ltr";
+ document.getElementById("langBtn").textContent=t().lang;
+ document.getElementById("heroTitle").innerHTML=t().hero;
+ document.getElementById("heroText").textContent=t().slogan;
+ document.getElementById("heroButton").textContent=t().heroBtn;
+ document.getElementById("menuTitle").innerHTML=t().menu;
+ document.getElementById("allBtn").textContent=t().all;
+ document.getElementById("burgerBtn").textContent=t().burger;
+ document.getElementById("chickenBtn").textContent=t().chicken;
+ document.getElementById("cartTitle").innerHTML=t().cart;
+ document.getElementById("totalLabel").textContent=t().total;
+ document.getElementById("checkoutBtn").textContent=t().checkout;
+ document.getElementById("cartNote").textContent=t().note;
+ document.getElementById("aboutTitle").innerHTML=t().about;
+ document.getElementById("aboutText").textContent=t().aboutText;
+ document.getElementById("contactTitle").innerHTML=t().contact;
+ document.getElementById("footer").textContent=t().footer;
+
+ renderMenu(document.querySelector(".filter.active").id==="burgerBtn"?"burger":
+ document.querySelector(".filter.active").id==="chickenBtn"?"chicken":"all");
+ renderCart();
+}
+
+renderMenu();
+renderCart();
 </script>
+
 </body>
 </html>
