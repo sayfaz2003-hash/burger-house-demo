@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BURGER HOUSE | Restaurant</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#111;color:white}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;background:#181818}
+.logo{font-size:23px;font-weight:900;color:#ff9d00}
+button{cursor:pointer;border:0;border-radius:25px;padding:11px 17px;font-weight:bold}
+.lang{background:#ff9d00;color:#111}
+.hero{text-align:center;padding:75px 20px;background:linear-gradient(#0009,#000b),url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400') center/cover}
+.hero h1{font-size:42px;margin-bottom:15px}
+.hero h1 span{color:#ff9d00}
+.hero p{font-size:17px;margin-bottom:25px}
+.order{background:#ff9d00;color:#111;text-decoration:none;padding:14px 24px;border-radius:25px;display:inline-block;font-weight:bold}
+section{padding:45px 6%;text-align:center}
+h2{font-size:30px;margin-bottom:25px}
+h2 span{color:#ff9d00}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#202020;border-radius:16px;overflow:hidden;text-align:left}
+.card img{width:100%;height:180px;object-fit:cover}
+.info{padding:17px}
+.info h3{margin-bottom:9px}
+.info p{color:#bbb;font-size:14px;min-height:35px}
+.price{color:#ff9d00;font-size:20px;font-weight:bold;margin-top:13px}
+.about{background:#1b1b1b}
+.contact p{margin:12px}
+footer{background:#080808;text-align:center;padding:22px;color:#aaa}
+@media(max-width:500px){
+.hero h1{font-size:32px}
+section{padding:35px 5%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍔 BURGER HOUSE</div>
+  <button class="lang" onclick="changeLang()" id="langBtn">العربية</button>
+</header>
+
+<div class="hero">
+  <h1 id="heroTitle">LE GOÛT <span>AUTHENTIQUE</span></h1>
+  <p id="heroText">Des burgers généreux, préparés avec passion !</p>
+  <a class="order" id="heroOrder" href="#menu">DÉCOUVRIR NOTRE MENU</a>
+</div>
+
+<section id="menu">
+  <h2 id="menuTitle">NOTRE <span>MENU</span></h2>
+  <div class="menu">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600" alt="Classic burger">
+      <div class="info">
+        <h3 id="name1">Classic Burger</h3>
+        <p id="desc1">Steak, fromage, salade et sauce maison.</p>
+        <div class="price">12 DT</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600" alt="Double burger">
+      <div class="info">
+        <h3 id="name2">Double Cheese</h3>
+        <p id="desc2">Double steak, double fromage, sauce spéciale.</p>
+        <div class="price">18 DT</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600" alt="Chicken burger">
+      <div class="info">
+        <h3 id="name3">Chicken Burger</h3>
+        <p id="desc3">Poulet croustillant, salade et sauce.</p>
+        <div class="price">14 DT</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about">
+  <h2 id="aboutTitle">À <span>PROPOS</span></h2>
+  <p id="aboutText">Chez Burger House, nous préparons chaque burger avec des ingrédients soigneusement sélectionnés et beaucoup de passion.</p>
+</section>
+
+<section class="contact">
+  <h2 id="contactTitle">NOUS <span>CONTACTER</span></h2>
+  <p id="address">📍 Votre adresse ici, Tunisie</p>
+  <p>📞 +216 XX XXX XXX</p>
+  <a class="order" id="contactOrder"
+     href="https://wa.me/21600000000"
+     target="_blank">COMMANDER SUR WHATSAPP</a>
+</section>
+
+<footer id="footerText">
+  © 2026 BURGER HOUSE - Tous droits réservés
+</footer>
+
+<script>
+let arabic=false;
+
+function changeLang(){
+ arabic=!arabic;
+ document.documentElement.lang=arabic?"ar":"fr";
+ document.body.style.direction=arabic?"rtl":"ltr";
+
+ const t={
+ fr:{
+  btn:"العربية",
+  hero:'LE GOÛT <span>AUTHENTIQUE</span>',
+  slogan:"Des burgers généreux, préparés avec passion !",
+  heroBtn:"DÉCOUVRIR NOTRE MENU",
+  menu:'NOTRE <span>MENU</span>',
+  names:["Classic Burger","Double Cheese","Chicken Burger"],
+  desc:["Steak, fromage, salade et sauce maison.",
+  "Double steak, double fromage, sauce spéciale.",
+  "Poulet croustillant, salade et sauce."],
+  about:'À <span>PROPOS</span>',
+  aboutText:"Chez Burger House, nous préparons chaque burger avec des ingrédients soigneusement sélectionnés et beaucoup de passion.",
+  contact:'NOUS <span>CONTACTER</span>',
+  order:"COMMANDER SUR WHATSAPP",
+  footer:"© 2026 BURGER HOUSE - Tous droits réservés"
+ },
+ ar:{
+  btn:"Français",
+  hero:'الطعم <span>الأصيل</span>',
+  slogan:"برغر شهي ومحضّر بكل حب!",
+  heroBtn:"اكتشف قائمتنا",
+  menu:'قائمة <span>الطعام</span>',
+  names:["برغر كلاسيك","دوبل تشيز","برغر الدجاج"],
+  desc:["لحم وجبن وخس وصلصة منزلية.",
+  "قطعتا لحم وجبن مضاعف وصلصة خاصة.",
+  "دجاج مقرمش وخس وصلصة."],
+  about:'من <span>نحن</span>',
+  aboutText:"في برغر هاوس نحضّر كل برغر بمكونات مختارة بعناية وبكل شغف.",
+  contact:'<span>اتصل</span> بنا',
+  order:"اطلب عبر واتساب",
+  footer:"© 2026 برغر هاوس - جميع الحقوق محفوظة"
+ }
+ };
+ let x=arabic?t.ar:t.fr;
+ document.getElementById("langBtn").textContent=x.btn;
+ document.getElementById("heroTitle").innerHTML=x.hero;
+ document.getElementById("heroText").textContent=x.slogan;
+ document.getElementById("heroOrder").textContent=x.heroBtn;
+ document.getElementById("menuTitle").innerHTML=x.menu;
+ for(let i=1;i<=3;i++){
+  document.getElementById("name"+i).textContent=x.names[i-1];
+  document.getElementById("desc"+i).textContent=x.desc[i-1];
+ }
+ document.getElementById("aboutTitle").innerHTML=x.about;
+ document.getElementById("aboutText").textContent=x.aboutText;
+ document.getElementById("contactTitle").innerHTML=x.contact;
+ document.getElementById("contactOrder").textContent=x.order;
+ document.getElementById("footerText").textContent=x.footer;
+}
+</script>
+</body>
+</html>
